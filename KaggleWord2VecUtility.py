@@ -1,17 +1,14 @@
 #!/usr/bin/env python
 
 import re
-import nltk
-
-import pandas as pd
-import numpy as np
 
 from bs4 import BeautifulSoup
 from nltk.corpus import stopwords
 
 
 class KaggleWord2VecUtility(object):
-    """KaggleWord2VecUtility is a utility class for processing raw HTML text into segments for further learning"""
+    """KaggleWord2VecUtility is a utility class for processing
+       raw HTML text into segments for further learning"""
 
     @staticmethod
     def review_to_wordlist( review, remove_stopwords=False ):
@@ -22,7 +19,7 @@ class KaggleWord2VecUtility(object):
         review_text = BeautifulSoup(review).get_text()
         #
         # 2. Remove non-letters
-        review_text = re.sub("[^a-zA-Z]"," ", review_text)
+        review_text = re.sub("[^a-zA-Z]", " ", review_text)
         #
         # 3. Convert words to lower case and split them
         words = review_text.lower().split()
@@ -33,7 +30,7 @@ class KaggleWord2VecUtility(object):
             words = [w for w in words if not w in stops]
         #
         # 5. Return a list of words
-        return(words)
+        return words
 
     # Define a function to split a review into parsed sentences
     @staticmethod
